@@ -83,6 +83,6 @@ http://localhost:3000
 ```
 ## 🧭 Available Routes (Current)
 As of now, the available routes are as follows:
-| Header 1 | Header 2 |
+| Route | Description |
 | --- | --- | 
 | ```/request``` | Multi-step Assistance Request Form | 
