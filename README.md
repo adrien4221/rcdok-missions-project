@@ -82,7 +82,7 @@ The app will be available at:
 http://localhost:3000
 ```
 ## 🧭 Available Routes (Current)
-| Header 1 | Header 2 | Header 3 |
+As of now, the available routes are as follows:
+| Header 1 | Header 2 |
 | --- | --- | --- |
-| Row 1, Col 1 | Row 1, Col 2 | Row 1, Col 3 |
-| Row 2, Col 1 | Row 2, Col 2 | Row 2, Col 3 |
+| ```/request``` | Multi-step Assistance Request Form | 
