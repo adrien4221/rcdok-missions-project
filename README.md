@@ -48,7 +48,7 @@ http://localhost:3000
 As of now, the available routes are as follows:
 | Route | Description |
 | --- | --- | 
-| ```/request``` | Multi-step Assistance Request Form | 
+| ```/public/request``` | Multi-step Assistance Request Form | 
 
 ## 🧩 Project Structure
 ```
