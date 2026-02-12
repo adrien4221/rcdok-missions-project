@@ -6,19 +6,19 @@ interface Props {
 }
 
 export default function StepSchedule({ onBack }: Props) {
-  // Local state for interactivity
-  // Changed selectedDate to string to accommodate date input value (YYYY-MM-DD)
+  // local state
+  // changed selectedDate to string to accommodate date input value (YYYY-MM-DD)
   const [selectedDate, setSelectedDate] = useState<string>('');
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   
-  // Mock data for time slots
+  // mock data for time slots
   const timeSlots = [
     "09:00 AM", "09:30 AM", "10:00 AM", 
     "01:00 PM", "02:30 PM", "04:00 PM"
   ];
 
   return (
-    // Added mb-24 to prevent overlap with the progress bar if it exists in parent context
+    // margin button 24 to properly show progress bar 
     <div className="w-full max-w-md animate-in fade-in slide-in-from-bottom-4 duration-500 mb-24 mx-auto">
       
       <div className="text-center mb-6">
@@ -30,13 +30,13 @@ export default function StepSchedule({ onBack }: Props) {
 
       <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 space-y-8">
         
-        {/* --- CONTACT INFO SECTION --- */}
+        {/* contact info */}
         <div className="space-y-4">
             <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider flex items-center gap-2">
                 Contact Details
             </h3>
             
-            {/* Phone Input */}
+            {/* phone input */}
             <div>
             <label className="text-xs text-gray-500 mb-1 block">Phone Number</label>
             <div className="flex gap-2 border-b border-gray-200 pb-2">
@@ -51,7 +51,7 @@ export default function StepSchedule({ onBack }: Props) {
             </div>
             </div>
 
-            {/* Email Input */}
+            {/* email input */}
             <div>
             <label className="text-xs text-gray-500 mb-1 block">Email Address</label>
             <input
@@ -62,13 +62,13 @@ export default function StepSchedule({ onBack }: Props) {
             </div>
         </div>
 
-        {/* --- CALENDAR SECTION (UPDATED) --- */}
+        {/* calendar input */}
         <div>
             <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider flex items-center gap-2 mb-2">
                 <Calendar size={14} className="text-blue-600"/> Select Date
             </h3>
             
-            {/* Replaced custom grid with standard date input */}
+            {/* standard date input */}
             <div className="relative">
                 <input 
                     type="date"
@@ -79,7 +79,7 @@ export default function StepSchedule({ onBack }: Props) {
             </div>
         </div>
 
-        {/* --- TIME SLOTS SECTION --- */}
+        {/* time slots */}
         <div>
             <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider flex items-center gap-2 mb-4">
                 <Clock size={14} className="text-blue-600"/> Available Time
@@ -105,7 +105,7 @@ export default function StepSchedule({ onBack }: Props) {
 
       </div>
 
-      {/* Navigation Buttons */}
+      {/* nav buttons */}
       <div className="mt-8 flex gap-3">
         <button 
             onClick={onBack}
