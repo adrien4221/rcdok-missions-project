@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { ChevronDown, CheckCircle, ChevronLeft, ChevronRight, Calendar, Clock } from 'lucide-react';
+import React, { useState } from 'react';
+import { ChevronDown, CheckCircle, Calendar, Clock } from 'lucide-react';
 
 interface Props {
   onBack: () => void;
@@ -7,11 +7,9 @@ interface Props {
 
 export default function StepSchedule({ onBack }: Props) {
   // Local state for interactivity
-  const [selectedDate, setSelectedDate] = useState<number | null>(null);
+  // Changed selectedDate to string to accommodate date input value (YYYY-MM-DD)
+  const [selectedDate, setSelectedDate] = useState<string>('');
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
-
-  // Mock data for the calendar (Days 1-30)
-  const days = Array.from({ length: 30 }, (_, i) => i + 1);
   
   // Mock data for time slots
   const timeSlots = [
@@ -20,8 +18,8 @@ export default function StepSchedule({ onBack }: Props) {
   ];
 
   return (
-    // Added mb-24 to prevent overlap with the progress bar
-    <div className="w-full max-w-md animate-in fade-in slide-in-from-bottom-4 duration-500 mb-24">
+    // Added mb-24 to prevent overlap with the progress bar if it exists in parent context
+    <div className="w-full max-w-md animate-in fade-in slide-in-from-bottom-4 duration-500 mb-24 mx-auto">
       
       <div className="text-center mb-6">
         <h2 className="text-2xl font-bold text-gray-900">Schedule Appointment</h2>
@@ -64,40 +62,20 @@ export default function StepSchedule({ onBack }: Props) {
             </div>
         </div>
 
-        {/* --- CALENDAR SECTION --- */}
+        {/* --- CALENDAR SECTION (UPDATED) --- */}
         <div>
-            <div className="flex items-center justify-between mb-4">
-                <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider flex items-center gap-2">
-                    <Calendar size={14} className="text-blue-600"/> Select Date
-                </h3>
-                <div className="flex gap-2">
-                    <button className="p-1 hover:bg-gray-100 rounded-full text-gray-400"><ChevronLeft size={16}/></button>
-                    <span className="text-xs font-medium text-gray-600">October 2023</span>
-                    <button className="p-1 hover:bg-gray-100 rounded-full text-gray-400"><ChevronRight size={16}/></button>
-                </div>
-            </div>
-
-            {/* Calendar Grid */}
-            <div className="grid grid-cols-7 gap-2 text-center mb-2">
-                {['S','M','T','W','T','F','S'].map((d) => (
-                    <span key={d} className="text-[10px] text-gray-400 font-bold">{d}</span>
-                ))}
-            </div>
-            <div className="grid grid-cols-7 gap-2">
-                {days.map((day) => (
-                    <button
-                        key={day}
-                        onClick={() => setSelectedDate(day)}
-                        className={`
-                            h-8 w-8 text-xs rounded-full flex items-center justify-center transition-all
-                            ${selectedDate === day 
-                                ? 'bg-blue-600 text-white shadow-md scale-110' 
-                                : 'text-gray-600 hover:bg-blue-50 hover:text-blue-600'}
-                        `}
-                    >
-                        {day}
-                    </button>
-                ))}
+            <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider flex items-center gap-2 mb-2">
+                <Calendar size={14} className="text-blue-600"/> Select Date
+            </h3>
+            
+            {/* Replaced custom grid with standard date input */}
+            <div className="relative">
+                <input 
+                    type="date"
+                    value={selectedDate}
+                    onChange={(e) => setSelectedDate(e.target.value)}
+                    className="w-full border-b border-gray-200 py-3 text-sm text-gray-900 placeholder:text-gray-300 focus:outline-none focus:border-blue-600 transition-colors cursor-pointer"
+                />
             </div>
         </div>
 
@@ -137,7 +115,11 @@ export default function StepSchedule({ onBack }: Props) {
         </button>
         <button
           onClick={() => alert(`Submitted for Date: ${selectedDate}, Time: ${selectedTime}`)}
-          className="flex-1 bg-[#005FAC] hover:bg-blue-700 text-white py-3 rounded-full text-sm font-medium flex items-center justify-center gap-2 transition-all shadow-md shadow-blue-900/20"
+          disabled={!selectedDate || !selectedTime}
+          className={`flex-1 py-3 rounded-full text-sm font-medium flex items-center justify-center gap-2 transition-all shadow-md 
+            ${selectedDate && selectedTime 
+                ? 'bg-[#005FAC] hover:bg-blue-700 text-white shadow-blue-900/20' 
+                : 'bg-gray-200 text-gray-400 cursor-not-allowed shadow-none'}`}
         >
           Confirm Appointment <CheckCircle size={16} />
         </button>
