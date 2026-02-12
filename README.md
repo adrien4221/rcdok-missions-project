@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## 📦 RCDOK Missions Operations Management System
+The Mission Operations Management System is a web-based Next.js + Supabase web-application that centralizes the Diocese’s social mission programs, including Nutrition, Civil Registry, Justice, Mental Health, Drug Rehabilitation, and Community Ministries. It features a searchable Resource Directory of parishes and services, an Assistance Request Form for community members, and an Inventory and Donor Management system to track donations and prevent duplication of aid.
 
-## Getting Started
+## 🧱 Tech Stack
+- Next.js (App Router)
+- React + TypeScript
+- Tailwind CSS
+- Supabase (Database & Auth – partially wired)
+- Node.js
 
-First, run the development server:
+## ✅ Prerequisites
+Required
+- Node.js >= 18.x
+```bash
+node -v
+```
+- npm
 
+## 🚀 Getting Started (Local Development)
+### 1. Clone the repository
+```bash
+git clone https://github.com/adrien4221/rcdok-missions-project.git
+cd rcdok-missions-project
+```
+### 2. Install the dependencies
+```bash
+npm install
+```
+### 3. Environment variables
+Create an ```.env.local``` file in the project root.
+```bash
+touch .env.local
+```
+Add the following (values will be provided separately):
+```env
+NEXT_PUBLIC_SUPABASE_URL=supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=supabase_anon_key
+```
+## 4. Run the development server
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+The app will be available at:
+```
+http://localhost:3000
+```
+## 🧭 Available Routes (Current)
+As of now, the available routes are as follows:
+| Route | Description |
+| --- | --- | 
+| ```/public/request``` | Multi-step Assistance Request Form | 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧩 Project Structure
+```
+app/
+ ├─ page.tsx            # Landing page
+ ├─ request/
+ │   └─ page.tsx        # Multi-step request form
+ ├─ admin/
+ │   └─ page.tsx        # Admin dashboard (future)
+components/
+ ├─ form/               # Multi-step form components
+ ├─ layout/             # Header, progress bar, etc.
+lib/
+ └─ supabase.ts         # Supabase client setup
+```
