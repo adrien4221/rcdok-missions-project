@@ -25,6 +25,7 @@ export default function StepPersonal({ onNext }: Props) {
         </div>
 
         {/* Last Name Input */}
+        {/*
         <div>
           <label className="block text-xs text-gray-600 mb-1">Last Name</label>
           <input
@@ -33,7 +34,7 @@ export default function StepPersonal({ onNext }: Props) {
             className="w-full border-b border-gray-200 py-2 text-sm text-gray-900 placeholder:text-gray-300 focus:outline-none focus:border-blue-600 transition-colors bg-transparent"
           />
         </div>
-
+          */}
         {/* Two Column Row: Age & Gender */}
         <div className="flex gap-6">
           {/* Age Select */}
